@@ -10,56 +10,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; background:#fefaf5; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#fefaf5; color:#333; }
+
+    /* Tampilan Login */
+    .login-wrapper {
+      max-width: 420px;
+      margin: 5rem auto;
+      padding: 2.5rem;
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .login-wrapper h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #6b3e26;
+    }
+    .keterangan {
+      text-align:center;
+      color:#666;
+      font-size:0.9rem;
+      margin-bottom:1.2rem;
+    }
+    .input {
+      width:100%; padding:.75rem; margin:.5rem 0 1.2rem;
+      border-radius:12px; border:1px solid #d9c4b3;
+      font-size: 1rem;
+    }
+    .btn {
+      width:100%; padding:.85rem;
+      background:#6b3e26; color:white;
+      border:none; border-radius:50px;
+      cursor:pointer; font-weight:500; font-size:1rem;
+      transition: background 0.3s;
+    }
+    .btn:hover { background:#54301c; }
+
+    /* Tampilan Utama (disembunyikan awalnya) */
+    #kontenUtama { display: none; }
+
     header {
       display:flex; justify-content:space-between; align-items:center;
       padding:1.2rem 8%; background:#f5e3d0;
+      flex-wrap: wrap; gap: 1rem;
     }
     .logo { font-size:1.8rem; font-weight:600; color:#6b3e26; }
-    nav a { margin-left:2rem; text-decoration:none; color:#3d2b1f; }
+    nav a {
+      margin-left:2rem; text-decoration:none;
+      color:#3d2b1f; font-weight:500;
+    }
+    nav a:last-child { color: #c0392b; }
 
     .hero {
       text-align:center; padding:4rem 2rem;
       background:linear-gradient(145deg,#faf0e7,#f5e3d0);
     }
+    .hero h1 { margin-bottom: 1rem; color: #6b3e26; }
+    .hero p { margin-bottom: 2rem; font-size: 1.1rem; }
 
-    .section { padding:4rem 8%; text-align:center; background-color: brown; }
-    .gray { background:#f8f0e9; }
+    .section { padding:4rem 8%; text-align:center; }
+    .coklat { background:#8b4513; color:#fff; }
+    .abu { background:#f8f0e9; }
 
-    .cards { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; }
+    .cards { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-top: 2rem; }
     .card {
       background:white; padding:2rem; width:260px;
       border-radius:28px; box-shadow:0 8px 24px rgba(0,0,0,.05);
+      color: #333;
     }
-
     .product-img {
       width:100%; height:150px; border-radius:20px;
       object-fit:cover; margin-bottom:1rem;
     }
+    .card h3 { margin-bottom: 0.5rem; color: #6b3e26; }
 
-    .input {
-      width:100%; padding:.7rem; margin:.4rem 0 1rem;
-      border-radius:12px; border:1px solid #d9c4b3;
-      font-family:'Poppins';
+    .form-transaksi {
+      max-width:500px; margin:2rem auto; background:white;
+      padding:2rem; border-radius:28px;
+      box-shadow:0 8px 24px rgba(0,0,0,.05);
     }
-
     .btn-transaksi {
       width:100%; padding:.8rem;
       background:#6b3e26; color:white;
       border:none; border-radius:50px;
-      cursor:pointer; margin-top:.6rem;
+      cursor:pointer; margin-top:.6rem; font-size: 1rem;
+      transition: background 0.3s;
     }
+    .btn-transaksi:hover { background:#54301c; }
 
     table {
       width:100%; border-collapse:collapse;
-      margin-top:1.5rem; background:white;
+      margin-top:2rem; background:white;
+      border-radius:12px; overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,.05);
     }
-
     th,td {
       border:1px solid #e5d2c3;
-      padding:.6rem; text-align:center;
+      padding:.8rem; text-align:center;
     }
+    th { background: #f5e3d0; color:#6b3e26; }
 
     footer {
       background:#2d1f15; color:#e4d3c6;
@@ -70,122 +120,144 @@
 
 <body>
 
-<header>
-  <div class="logo">TempeMART</div>
-  <nav>
-    <a href="#produk">Produk</a>
-    <a href="#transaksi">Transaksi</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Produksi & Penjualan Tempe Online</h1>
-  <p>Tempe segar dan berkualitas langsung dari produsen</p>
-  <button onclick="document.getElementById('transaksi').scrollIntoView()">Pesan Sekarang</button>
-</section>
-
-<section id="produk" class="section">
-  <h2>Produk Unggulan</h2>
-  <div class="cards">
-    <div class="card">
-      <img class="product-img" src="jenis tempe.jpg">
-      <h3>Tempe Original</h3>
-      <p>Rp 5.000</p>
-    </div>
-    <div class="card">
-      <img class="product-img" src="kemasan-tempe-sachet.jpg">
-      <h3>Tempe Premium</h3>
-      <p>Rp 7.000</p>
-    </div>
-    <div class="card">
-      <img class="product-img" src="tempe kriuk.jpg">
-      <h3>Tempe Siap Goreng</h3>
-      <p>Rp 10.000</p>
-    </div>
-  </div>
-</section>
-
-<section id="transaksi" class="section gray">
-  <h2>Transaksi Pemesanan</h2>
-
-  <div style="max-width:500px;margin:2rem auto;background:white;padding:2rem;border-radius:28px;">
-    <input id="nama" class="input" placeholder="Nama Pembeli">
-
-    <select id="produkSelect" class="input">
-      <option value="5000">Tempe Original - 5.000</option>
-      <option value="7000">Tempe Premium - 7.000</option>
-      <option value="10000">Tempe Siap Goreng - 10.000</option>
-    </select>
-
-    <input id="jumlah" type="number" value="1" min="1" class="input">
-
-    <button class="btn-transaksi" onclick="tampilkanTotal()">Hitung Total</button>
-    <p>Total: <b id="total">Rp 0</b></p>
-
-    <button class="btn-transaksi" onclick="simpanTransaksi()">Simpan Transaksi</button>
+  <!-- Halaman Login -->
+  <div id="halamanLogin" class="login-wrapper">
+    <h2>Masuk ke TempeMART</h2>
+    <p class="keterangan">Isi nama pengguna dan kata sandi apa saja untuk masuk</p>
+    <input type="text" id="namaPengguna" class="input" placeholder="Nama Pengguna" required>
+    <input type="password" id="kataSandi" class="input" placeholder="Kata Sandi" required>
+    <button class="btn" onclick="masuk()">Masuk</button>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nama</th>
-        <th>Produk</th>
-        <th>Jumlah</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody id="riwayat"></tbody>
-  </table>
-</section>
+  <!-- Konten Utama -->
+  <div id="kontenUtama">
+    <header>
+      <div class="logo">TempeMART</div>
+      <nav>
+        <a href="#produk">Produk</a>
+        <a href="#transaksi">Transaksi</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#" onclick="keluar()">Keluar</a>
+      </nav>
+    </header>
 
-<section id="kontak" class="section">
-  <h2>Kontak Kami</h2>
-  <p>Email: tempemart@gmail.com</p>
-  <p>WhatsApp: 08xxxxxxxxxx</p>
-</section>
+    <section class="hero">
+      <h1>Produksi & Penjualan Tempe Online</h1>
+      <p>Tempe segar dan berkualitas langsung dari produsen</p>
+      <button class="btn-transaksi" style="width:auto; padding:.9rem 2rem;" onclick="document.getElementById('transaksi').scrollIntoView()">Pesan Sekarang</button>
+    </section>
 
-<footer>
-  © 2026 TempeMART | Bisnis Tempe Digital
-</footer>
+    <section id="produk" class="section coklat">
+      <h2>Produk Unggulan</h2>
+      <div class="cards">
+        <div class="card">
+          <img class="product-img" src="img/jenis tempe.jpg" alt="Tempe Original">
+          <h3>Tempe Original</h3>
+          <p>Rp 5.000</p>
+        </div>
+        <div class="card">
+          <img class="product-img" src="img/kemasan-tempe-sachet.jpg" alt="Tempe Premium">
+          <h3>Tempe Premium</h3>
+          <p>Rp 7.000</p>
+        </div>
+        <div class="card">
+          <img class="product-img" src="img/tempe kriuk.jpg" alt="Tempe Siap Goreng">
+          <h3>Tempe Siap Goreng</h3>
+          <p>Rp 10.000</p>
+        </div>
+      </div>
+    </section>
 
-<script>
-  function hitungTotal() {
-    const harga = parseInt(document.getElementById("produkSelect").value);
-    const jumlah = parseInt(document.getElementById("jumlah").value);
-    return harga * jumlah;
-  }
+    <section id="transaksi" class="section abu">
+      <h2>Transaksi Pemesanan</h2>
+      <div class="form-transaksi">
+        <input id="nama" class="input" placeholder="Nama Pembeli">
+        <select id="produkSelect" class="input">
+          <option value="5000">Tempe Original - Rp 5.000</option>
+          <option value="7000">Tempe Premium - Rp 7.000</option>
+          <option value="10000">Tempe Siap Goreng - Rp 10.000</option>
+        </select>
+        <input id="jumlah" type="number" value="1" min="1" class="input">
+        <button class="btn-transaksi" onclick="tampilkanTotal()">Hitung Total</button>
+        <p style="margin: 1rem 0;">Total: <b id="total">Rp 0</b></p>
+        <button class="btn-transaksi" onclick="simpanTransaksi()">Simpan Transaksi</button>
+      </div>
 
-  function tampilkanTotal() {
-    const total = hitungTotal();
-    document.getElementById("total").innerText =
-      "Rp " + total.toLocaleString("id-ID");
-  }
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Produk</th>
+            <th>Jumlah</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="riwayat"></tbody>
+      </table>
+    </section>
 
-  function simpanTransaksi() {
-    const nama = document.getElementById("nama").value;
-    if (nama === "") {
-      alert("Nama wajib diisi!");
-      return;
+    <section id="kontak" class="section">
+      <h2>Kontak Kami</h2>
+      <p style="margin:0.5rem 0;">Email: tempemart@gmail.com</p>
+      <p>WhatsApp: 08xxxxxxxxxx</p>
+    </section>
+
+    <footer>© 2026 TempeMART | Bisnis Tempe Digital</footer>
+  </div>
+
+  <script>
+    // Masuk tanpa akun yang ditetapkan, cukup isi kedua kolom
+    function masuk() {
+      const namaPengguna = document.getElementById("namaPengguna").value.trim();
+      const kataSandi = document.getElementById("kataSandi").value.trim();
+
+      if (namaPengguna !== "" && kataSandi !== "") {
+        document.getElementById("halamanLogin").style.display = "none";
+        document.getElementById("kontenUtama").style.display = "block";
+      } else {
+        alert("Nama pengguna dan kata sandi tidak boleh kosong!");
+      }
     }
 
-    const produkSelect = document.getElementById("produkSelect");
-    const jumlah = document.getElementById("jumlah").value;
-    const total = hitungTotal();
+    function keluar() {
+      document.getElementById("kontenUtama").style.display = "none";
+      document.getElementById("halamanLogin").style.display = "block";
+      document.getElementById("namaPengguna").value = "";
+      document.getElementById("kataSandi").value = "";
+    }
 
-    const row = document.getElementById("riwayat").insertRow();
-    row.insertCell(0).innerText = nama;
-    row.insertCell(1).innerText =
-      produkSelect.options[produkSelect.selectedIndex].text;
-    row.insertCell(2).innerText = jumlah;
-    row.insertCell(3).innerText =
-      "Rp " + total.toLocaleString("id-ID");
+    // Fungsi transaksi
+    function hitungTotal() {
+      const harga = parseInt(document.getElementById("produkSelect").value);
+      const jumlah = parseInt(document.getElementById("jumlah").value);
+      return harga * jumlah;
+    }
 
-    document.getElementById("nama").value = "";
-    document.getElementById("jumlah").value = 1;
-    document.getElementById("total").innerText = "Rp 0";
-  }
-</script>
+    function tampilkanTotal() {
+      const total = hitungTotal();
+      document.getElementById("total").innerText = "Rp " + total.toLocaleString("id-ID");
+    }
 
+    function simpanTransaksi() {
+      const nama = document.getElementById("nama").value.trim();
+      if (nama === "") {
+        alert("Nama pembeli wajib diisi!");
+        return;
+      }
+      const produkSelect = document.getElementById("produkSelect");
+      const jumlah = document.getElementById("jumlah").value;
+      const total = hitungTotal();
+
+      const baris = document.getElementById("riwayat").insertRow();
+      baris.insertCell(0).innerText = nama;
+      baris.insertCell(1).innerText = produkSelect.options[produkSelect.selectedIndex].text;
+      baris.insertCell(2).innerText = jumlah;
+      baris.insertCell(3).innerText = "Rp " + total.toLocaleString("id-ID");
+
+      document.getElementById("nama").value = "";
+      document.getElementById("jumlah").value = 1;
+      document.getElementById("total").innerText = "Rp 0";
+    }
+  </script>
 </body>
 </html>
